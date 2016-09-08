@@ -11,11 +11,10 @@ class <%= entity %>CreateController {
 	}
 
 	save() {
-		var _this = this;
 		this.<%= entity %>.create(this.entity, function(res) {
 			console.log('new entity created');
-			//_this.goBack();
-		});
+			//this.goBack();
+		}.bind(this));
 	}
 
 	goBack() {

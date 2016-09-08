@@ -55,7 +55,7 @@ module.exports = generators.Base.extend({
 		}.bind(this));
 	},
 
-	writing: function() {
+	copyTemplates: function() {
 		this.directory = this.directory || this.entity.toLowerCase();
 
 		copyController(this, 'create');

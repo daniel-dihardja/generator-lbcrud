@@ -12,10 +12,9 @@ class <%= entity %>EditController {
 
 	save() {
 		var target = {id: this.entity.id};
-		var _this = this;
 		this.<%= entity %>.prototype$updateAttributes(target, this.entity, function(res) {
-			//_this.goBack();
-		})
+			//this.goBack();
+		}.bind(this))
 	}
 
 	goBack() {
