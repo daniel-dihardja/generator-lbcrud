@@ -12,14 +12,28 @@ class <%= entity %>ListController {
 	}
 
 	init() {
-		var q = {};
+		var q = {
+			filter: {}
+		};
 		this.<%= entity %>.find(q, function(res) {
 			this.entities = res;
 		}.bind(this));
 	}
 
-	deleteEntity() {
+	editEntity(entity) {
+		console.log('edit', entity);
+		// this.$state.go();
+	}
 
+	deleteEntity(entity) {
+		var target = {id: entity.id};
+		this.<%= entity %>.deleteByid(target, function() {
+			this.init();
+		}.bind(this))
+	}
+
+	newEntity() {
+		// this.$state.go();
 	}
 }
 <%= entity %>ListController.$inject = ['$state', '$stateParams', '<%= entity %>'];

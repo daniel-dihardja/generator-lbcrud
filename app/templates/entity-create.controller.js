@@ -13,13 +13,18 @@ class <%= entity %>CreateController {
 	save() {
 		this.<%= entity %>.create(this.entity, function(res) {
 			console.log('new entity created');
+
 			//this.goBack();
+
 		}.bind(this));
 	}
 
 	goBack() {
+
 		//this.$state.go();
+
 	}
 }
+
 <%= entity %>CreateController.$inject = ['$state', '$stateParams', '<%= entity %>'];
 export default <%= entity %>CreateController;
