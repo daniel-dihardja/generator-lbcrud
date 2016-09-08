@@ -1,0 +1,25 @@
+<md-content layout="column" class="pdl-60 pdr-60 pdt-30">
+    <h1>DialogBlock</h1>
+    
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>dialogId</label>
+        <input ng-model="vm.entity.dialogId" required>
+    </md-input-container>
+    
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>title</label>
+        <input ng-model="vm.entity.title" required>
+    </md-input-container>
+    
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>description</label>
+        <input ng-model="vm.entity.description" required>
+    </md-input-container>
+    
+
+    <md-card-actions layout="row">
+        <md-button class="md-raised" ng-click="vm.goBack()">Zurück</md-button>
+        <md-button class="md-raised md-primary" ng-click="vm.save()">Speichern</md-button>
+    </md-card-actions>
+
+</md-content>

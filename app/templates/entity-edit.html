@@ -1,0 +1,15 @@
+<md-content layout="column" class="pdl-60 pdr-60 pdt-30">
+    <h1><%= entity %></h1>
+    <% for(field in entityFields) { %>
+    <md-input-container class="md-block" flex-gt-sm>
+        <label><%= entityFields[field] %></label>
+        <input ng-model="vm.entity.<%= entityFields[field] %>" required>
+    </md-input-container>
+    <% }%>
+
+    <md-card-actions layout="row">
+        <md-button class="md-raised" ng-click="vm.goBack()">Zurück</md-button>
+        <md-button class="md-raised md-primary" ng-click="vm.save()">Speichern</md-button>
+    </md-card-actions>
+
+</md-content>
