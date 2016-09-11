@@ -3,9 +3,10 @@
  */
 class <%= entity %>ListController {
 
-	constructor($state, $stateParams, <%= entity %>) {
+	constructor($state, $stateParams, $mdDialog, <%= entity %>) {
 		this.$state = $state;
 		this.$stateParams = $stateParams;
+		this.$mdDialog = $mdDialog;
 		this.<%= entity %> = <%= entity %>;
 		this.entities = [];
 		this.init();
@@ -20,21 +21,38 @@ class <%= entity %>ListController {
 		}.bind(this));
 	}
 
+	newEntity() {
+		// this.$state.go('', {});
+	}
+
 	editEntity(entity) {
 		console.log('edit', entity);
-		// this.$state.go();
+		var params = {};
+		// this.$state.go('', params);
 	}
 
-	deleteEntity(entity) {
-		var target = {id: entity.id};
-		this.<%= entity %>.deleteByid(target, function() {
-			this.init();
-		}.bind(this))
+	deleteEntity(entity, ev) {
+		this.$mdDialog.show(this.confirmDialog(entity.id, ev)).then(function() {
+			this.<%= entity =>.deleteById({id: entity.id}, function() {
+				this.init();
+			}.bind(this))
+		}.bind(this),
+		function() {
+			// cancel ...  do nothingh yet
+		});
 	}
 
-	newEntity() {
-		// this.$state.go();
+	confirmDialog(text, ev) {
+		text = text || '';
+		var confirm = this.$mdDialog.confirm()
+			.title('Löschen')
+			.textContent(text)
+			.ariaLabel('Delete')
+			.targetEvent(ev)
+			.ok('Ja')
+			.cancel('Nein');
+		return confirm;
 	}
 }
-<%= entity %>ListController.$inject = ['$state', '$stateParams', '<%= entity %>'];
+<%= entity %>ListController.$inject = ['$state', '$stateParams', '$mdDialog', '<%= entity %>'];
 export default <%= entity %>ListController;
