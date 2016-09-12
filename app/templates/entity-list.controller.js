@@ -33,7 +33,7 @@ class <%= entity %>ListController {
 
 	deleteEntity(entity, ev) {
 		this.$mdDialog.show(this.confirmDialog(entity.id, ev)).then(function() {
-			this.<%= entity =>.deleteById({id: entity.id}, function() {
+			this.<%= entity %>.deleteById({id: entity.id}, function() {
 				this.init();
 			}.bind(this))
 		}.bind(this),
