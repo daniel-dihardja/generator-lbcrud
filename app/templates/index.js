@@ -2,7 +2,6 @@
  * Created by danieldihardja on 15/09/16.
  */
 import angular from 'angular';
-import uiRouter from 'angular-ui-router';
 
 import entityListController from './<%= entityLower %>-list.controller';
 import entityCreateController from './<%= entityLower %>-create.controller';
