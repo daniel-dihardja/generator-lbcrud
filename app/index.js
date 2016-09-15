@@ -61,6 +61,7 @@ module.exports = generators.Base.extend({
 		copyController(this, 'create');
 		copyController(this, 'edit');
 		copyController(this, 'list');
+		copyTemplate(this, 'create');
 		copyTemplate(this, 'edit');
 		copyTemplate(this, 'list');
 
