@@ -46,7 +46,7 @@ class <%= entity %>EditController {
 		this.translation.appLanguageId = 1; //  hardcode id for EN
 		this.<%= entity %>Translation.create(this.translation, function(res) {
 				console.log(res);
-			}, bind(this));
+			}.bind(this));
 	}
 
 	updateTranslation() {
