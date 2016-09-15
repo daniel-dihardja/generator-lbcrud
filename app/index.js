@@ -64,6 +64,7 @@ module.exports = generators.Base.extend({
 		copyTemplate(this, 'create');
 		copyTemplate(this, 'edit');
 		copyTemplate(this, 'list');
+		copyIndex(this);
 
 		this.log(this.entity, ' created');
 	}
@@ -87,6 +88,14 @@ function copyTemplate(_this, method) {
 	var fileName = _this.directory + '/' + entityToLower + '-' + method + '.html';
 	var to = _this.destinationPath(fileName);
 	_this.fs.copyTpl(from, to, {entity: _this.entity, entityFields: _this.entityFields});
+}
+
+function copyIndex(_this) {
+	var entityToLower = _this.entity.toLowerCase();
+	var from = _this.templatePath('index.js');
+	var fileName = _this.directory + '/index.js';
+	var to = _this.destinationPath(fileName);
+	_this.fs.copyTpl(from, to, {entity: _this.entity, entityLower: entityToLower});
 }
 
 
