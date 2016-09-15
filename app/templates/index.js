@@ -36,10 +36,7 @@ let <%= entityLower %>Module = angular.module('admin.crud-<%= entity %>', [uiRou
 					controller: entityEditController,
 					controllerAs: 'vm',
 					template: entityEditTpl,
-					url: '/<%= entity %>/:id/edit',
-					params: {
-						entity: null
-					}
+					url: '/<%= entity %>/:id/edit'
 				})
 
 	}]);

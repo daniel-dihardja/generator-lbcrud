@@ -7,6 +7,16 @@
     </md-input-container>
     <% }%>
 
+    <h2>Übersetzungen (EN)</h2>
+
+    <% for(field in entityFields) { %>
+    <md-input-container class="md-block" flex-gt-sm>
+        <label><%= entityFields[field] %></label>
+        <input ng-model="vm.translation.<%= entityFields[field] %>" required>
+    </md-input-container>
+    <% }%>
+
+
     <md-card-actions layout="row">
         <md-button class="md-raised" ng-click="vm.goBack()">Zurück</md-button>
         <md-button class="md-raised md-primary" ng-click="vm.save()">Speichern</md-button>
