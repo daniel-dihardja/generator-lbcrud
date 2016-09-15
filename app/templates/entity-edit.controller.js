@@ -11,14 +11,13 @@ class <%= entity %>EditController {
 	}
 
 	save() {
-		var target = {id: this.entity.id};
-		this.<%= entity %>.prototype$updateAttributes(target, this.entity, function(res) {
-			//this.goBack();
+		this.<%= entity %>.prototype$updateAttributes({id: this.entity.id}, this.entity, function(res) {
+			this.goBack();
 		}.bind(this))
 	}
 
 	goBack() {
-
+		this.$state.go('admin.<%= entity %>-list');
 	}
 }
 <%= entity %>EditController.$inject = ['$state', '$stateParams', '<%= entity %>'];

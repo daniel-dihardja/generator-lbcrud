@@ -4,12 +4,13 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
-import entityListController from '<%= entityLower %>-list.controller';
-import entityCreateController from '<%= entityLower %>-create.controller';
-import entityEditController from '<%= entityLower %>-edit.controller';
-import entityListTpl from '<%= entityLower %>-list.html';
-import entityCreateTpl from '<%= entityLower %>-create.html';
-import entityEditTpl from '<%= entityLower %>-edit.html';
+import entityListController from './<%= entityLower %>-list.controller';
+import entityCreateController from './<%= entityLower %>-create.controller';
+import entityEditController from './<%= entityLower %>-edit.controller';
+import entityListTpl from './<%= entityLower %>-list.html!text';
+import entityCreateTpl from './<%= entityLower %>-create.html!text';
+import entityEditTpl from './<%= entityLower %>-edit.html!text';
+
 
 let <%= entityLower %>Module = angular.module('admin.crud-<%= entity %>', [uiRouter])
 	.config(['$stateProvider', ($stateProvider) => {
@@ -18,7 +19,7 @@ let <%= entityLower %>Module = angular.module('admin.crud-<%= entity %>', [uiRou
 				'admin.<%= entity %>-list', {
 					controller: entityListController,
 					controllerAs: 'vm',
-					template: 'entityListTpl',
+					template: entityListTpl,
 					url: '/<%= entity %>'
 				})
 
@@ -26,7 +27,7 @@ let <%= entityLower %>Module = angular.module('admin.crud-<%= entity %>', [uiRou
 				'admin.<%= entity %>-create', {
 					controller: entityCreateController,
 					controllerAs: 'vm',
-					template: 'entityCreateTpl',
+					template: entityCreateTpl,
 					url: '/<%= entity %>/create'
 				})
 
@@ -34,8 +35,11 @@ let <%= entityLower %>Module = angular.module('admin.crud-<%= entity %>', [uiRou
 				'admin.<%= entity %>-edit', {
 					controller: entityEditController,
 					controllerAs: 'vm',
-					template: 'entityEditTpl',
-					url: '/<%= entity %>/:id/edit'
+					template: entityEditTpl,
+					url: '/<%= entity %>/:id/edit',
+					params: {
+						entity: null
+					}
 				})
 
 	}]);

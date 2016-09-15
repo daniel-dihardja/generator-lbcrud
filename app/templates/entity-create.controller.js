@@ -12,17 +12,12 @@ class <%= entity %>CreateController {
 
 	save() {
 		this.<%= entity %>.create(this.entity, function(res) {
-			console.log('new entity created');
-
-			//this.goBack();
-
+			this.goBack();
 		}.bind(this));
 	}
 
 	goBack() {
-
-		//this.$state.go();
-
+		this.$state.go('admin.<%= entity %>-list');
 	}
 }
 

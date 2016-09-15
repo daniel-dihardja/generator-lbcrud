@@ -21,16 +21,6 @@ class <%= entity %>ListController {
 		}.bind(this));
 	}
 
-	newEntity() {
-		// this.$state.go('', {});
-	}
-
-	editEntity(entity) {
-		console.log('edit', entity);
-		var params = {};
-		// this.$state.go('', params);
-	}
-
 	deleteEntity(entity, ev) {
 		this.$mdDialog.show(this.confirmDialog(entity.id, ev)).then(function() {
 			this.<%= entity %>.deleteById({id: entity.id}, function() {

@@ -19,7 +19,7 @@
 
                     <td md-cell layout="row">
                         <span flex></span>
-                        <md-button class="md-icon-button" ng-click="vm.editEntity(entity)"><md-icon>edit</md-icon></md-button>
+                        <md-button class="md-icon-button" ui-sref="admin.<%= entity %>-edit({entity: entity})"><md-icon>edit</md-icon></md-button>
                         <md-button class="md-icon-button" ng-click="vm.deleteEntity(entity)"><md-icon>delete</md-icon></md-button>
                     </td>
                 </tr>
@@ -30,7 +30,7 @@
 
     <md-card-actions layout="row" class="pdt-30">
         <span flex></span>
-        <md-button class="md-raised" ng-click="vm.newEntity()">Neu</md-button>
+        <md-button class="md-raised" ui-sref="admin.<%= entity %>-create">Neu</md-button>
     </md-card-actions>
 
 </md-content>
