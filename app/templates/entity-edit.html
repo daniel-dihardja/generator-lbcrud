@@ -1,20 +1,28 @@
 <md-content layout="column" class="pdl-60 pdr-60 pdt-30">
     <h1>Edit <%= entity %></h1>
-    <% for(field in entityFields) { %>
-    <md-input-container class="md-block" flex-gt-sm>
-        <label><%= entityFields[field] %></label>
-        <input ng-model="vm.entity.<%= entityFields[field] %>" required>
-    </md-input-container>
-    <% }%>
 
-    <h2>Übersetzungen (EN)</h2>
+    <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="DE">
+            <md-content>
+                <% for(field in entityFields) { %>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label><%= entityFields[field] %></label>
+                    <input ng-model="vm.entity.<%= entityFields[field] %>" required>
+                </md-input-container>
+                <% }%>
+            </md-content>
+        </md-tab>
 
-    <% for(field in entityFields) { %>
-    <md-input-container class="md-block" flex-gt-sm>
-        <label><%= entityFields[field] %></label>
-        <input ng-model="vm.translation.<%= entityFields[field] %>" required>
-    </md-input-container>
-    <% }%>
+        <md-tab label="EN">
+            <% for(field in entityFields) { %>
+            <md-input-container class="md-block" flex-gt-sm>
+                <label><%= entityFields[field] %></label>
+                <input ng-model="vm.translation.<%= entityFields[field] %>" required>
+            </md-input-container>
+            <% }%>
+        </md-tab>
+
+    </md-tabs>
 
 
     <md-card-actions layout="row">

@@ -3,33 +3,53 @@
  */
 class <%= entity %>ListController {
 
-	constructor($state, $stateParams, $mdDialog, <%= entity %>) {
+	constructor($state, $stateParams, $mdDialog, <%= entity %>, <%= entity %>Translation) {
 		this.$state = $state;
 		this.$stateParams = $stateParams;
 		this.$mdDialog = $mdDialog;
 		this.<%= entity %> = <%= entity %>;
+		this.<%= entity %>Translation = <%= entity %>Translation;
+
 		this.entities = [];
 		this.init();
 	}
 
 	init() {
 		var q = {
-			filter: {}
+			filter: {
+				include: 'translations'
+			}
 		};
 		this.<%= entity %>.find(q, function(res) {
 			this.entities = res;
 		}.bind(this));
 	}
 
-	deleteEntity(entity, ev) {
+	deleteItem(entity, ev) {
+		entity = entity.toJSON();
 		this.$mdDialog.show(this.confirmDialog(entity.id, ev)).then(function() {
-			this.<%= entity %>.deleteById({id: entity.id}, function() {
-				this.init();
-			}.bind(this))
+			this.deleteEntity(entity);
 		}.bind(this),
 		function() {
 			// cancel ...  do nothingh yet
-		});
+		}.bind(this));
+	}
+
+	deleteEntity(entity) {
+		this.deleteEntityTranslation(entity.translations[0])
+			.then(function(res) {
+				return this.<%= entity %>.deleteById({id: entity.id}).$promise;
+			}.bind(this))
+
+			.then(function(res) {
+				this.init();
+			}.bind(this))
+
+	}
+
+	deleteEntityTranslation(translation) {
+		translation = translation || {id: 0};
+		return this.<%= entity %>Translation.deleteById({id: translation.id}).$promise;
 	}
 
 	confirmDialog(text, ev) {
@@ -44,5 +64,5 @@ class <%= entity %>ListController {
 		return confirm;
 	}
 }
-<%= entity %>ListController.$inject = ['$state', '$stateParams', '$mdDialog', '<%= entity %>'];
+<%= entity %>ListController.$inject = ['$state', '$stateParams', '$mdDialog', '<%= entity %>', '<%= entity %>Translation'];
 export default <%= entity %>ListController;

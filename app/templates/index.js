@@ -12,7 +12,7 @@ import entityCreateTpl from './<%= entityLower %>-create.html!text';
 import entityEditTpl from './<%= entityLower %>-edit.html!text';
 
 
-let <%= entityLower %>Module = angular.module('admin.crud-<%= entity %>', [uiRouter])
+let <%= entityLower %>Module = angular.module('admin.crud-<%= entity %>', [])
 	.config(['$stateProvider', ($stateProvider) => {
 		$stateProvider
 			.state(
