@@ -5,6 +5,7 @@
             <thead md-head>
             <tr md-row class="gr-50">
                 <th md-column><span>Id</span></th>
+                <th md-column><span>Status</span></th>
 
                 <!-- Additional Tab Titles -->
 
@@ -14,6 +15,10 @@
             <trbody md-body>
                 <tr md-row ng-repeat="entity in vm.entities">
                     <td md-cell>{{entity.id}}</td>
+                    <td md-cell>
+                        <md-icon ng-show="! entity.publish">https</md-icon>
+                        <md-icon ng-show="entity.publish">done</md-icon>
+                    </td>
 
                     <!-- Additional Entity Property/field -->
 
