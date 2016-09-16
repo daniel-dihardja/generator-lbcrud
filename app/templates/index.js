@@ -19,7 +19,10 @@ let <%= entityLower %>Module = angular.module('admin.crud-<%= entity %>', [])
 					controller: entityListController,
 					controllerAs: 'vm',
 					template: entityListTpl,
-					url: '/<%= entity %>'
+					url: '/<%= entity %>',
+					params: {
+						belongsToEntity: null
+					}
 				})
 
 			.state(
@@ -27,7 +30,10 @@ let <%= entityLower %>Module = angular.module('admin.crud-<%= entity %>', [])
 					controller: entityCreateController,
 					controllerAs: 'vm',
 					template: entityCreateTpl,
-					url: '/<%= entity %>/create'
+					url: '/<%= entity %>/create',
+					params: {
+						belongsToEntity: null
+					}
 				})
 
 			.state(
@@ -35,7 +41,10 @@ let <%= entityLower %>Module = angular.module('admin.crud-<%= entity %>', [])
 					controller: entityEditController,
 					controllerAs: 'vm',
 					template: entityEditTpl,
-					url: '/<%= entity %>/:id/edit'
+					url: '/<%= entity %>/:id/edit',
+					params: {
+						belongsToEntity: null
+					}
 				})
 
 	}]);

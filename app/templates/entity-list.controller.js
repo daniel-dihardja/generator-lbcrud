@@ -15,9 +15,18 @@ class <%= entity %>ListController {
 	}
 
 	init() {
+
+		var w = null;
+		if(this.$stateParams.belongsToEntity) {
+			var belongsTo = this.$stateParams.belongsToEntity;
+			w = {zpArtikelId: belongsTo.id}
+		}
+
 		var q = {
 			filter: {
-				include: 'translations'
+				where: w,
+				include: 'translations',
+				order: 'ranking ASC'
 			}
 		};
 		this.<%= entity %>.find(q, function(res) {

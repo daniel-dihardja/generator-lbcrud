@@ -8,7 +8,7 @@
     <% }%>
 
     <md-card-actions layout="row">
-        <md-button class="md-raised" ui-sref="admin.<%= entity %>-list">Zurück</md-button>
+        <md-button class="md-raised" ui-sref="admin.<%= entity %>-list({belongsToEntity: vm.$stateParams.belongsToEntity})">Zurück</md-button>
         <md-button class="md-raised md-primary" ng-click="vm.save()">Speichern</md-button>
     </md-card-actions>
 
