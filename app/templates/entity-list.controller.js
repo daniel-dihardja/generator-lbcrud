@@ -63,6 +63,41 @@ class <%= entity %>ListController {
 			.cancel('Nein');
 		return confirm;
 	}
+
+	rankUp(entity) {
+		console.log('rank up', entity.ranking);
+		for(var i=0; i<this.entities.length; i++) {
+			var item = this.entities[i];
+			if(item.id == entity.id) continue;
+			if(item.ranking == entity.ranking - 1) {
+				item.ranking = entity.ranking;
+				item.$save();
+				break;
+			}
+		}
+		entity.ranking -= 1;
+		if(entity.ranking < 1) entity.ranking = 1;
+		entity.$save(function() {
+			this.init();
+		}.bind(this))
+	}
+
+	rankDown(entity) {
+		console.log('rank down', entity.ranking);
+		for(var i=0; i<this.entities.length; i++) {
+			var item = this.entities[i];
+			if(item.id == entity.id) continue;
+			if(item.ranking == entity.ranking + 1) {
+				item.ranking = entity.ranking;
+				item.$save();
+				break;
+			}
+		}
+		entity.ranking += 1;
+		entity.$save(function() {
+			this.init();
+		}.bind(this))
+	}
 }
 <%= entity %>ListController.$inject = ['$state', '$stateParams', '$mdDialog', '<%= entity %>', '<%= entity %>Translation'];
 export default <%= entity %>ListController;

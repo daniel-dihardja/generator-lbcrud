@@ -19,6 +19,8 @@
 
                     <td md-cell layout="row">
                         <span flex></span>
+                        <md-button ng-disabled="$first" class="md-icon-button" ng-click="vm.rankUp(entity)"><md-icon>expand_less</md-icon></md-button>
+                        <md-button ng-disabled="$last" class="md-icon-button" ng-click="vm.rankDown(entity)"><md-icon>expand_more</md-icon></md-button>
                         <md-button class="md-icon-button" ui-sref="admin.<%= entity %>-edit({id: entity.id})"><md-icon>edit</md-icon></md-button>
                         <md-button class="md-icon-button" ng-click="vm.deleteItem(entity)"><md-icon>delete</md-icon></md-button>
                     </td>
