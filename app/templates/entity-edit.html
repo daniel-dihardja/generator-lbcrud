@@ -3,7 +3,12 @@
 
     <md-tabs md-dynamic-height md-border-bottom>
         <md-tab label="DE">
-            <md-content>
+            <md-content class="pd-top-20">
+                <md-input-container class="md-block" flex-gt-sm>
+                    <md-checkbox ng-model="vm.entity.publish" aria-label="Publish">
+                        Publizieren
+                    </md-checkbox>
+                </md-input-container>
                 <% for(field in entityFields) { %>
                 <md-input-container class="md-block" flex-gt-sm>
                     <label><%= entityFields[field] %></label>
@@ -14,12 +19,14 @@
         </md-tab>
 
         <md-tab label="EN">
+            <md-content class="pd-top-20">
             <% for(field in entityFields) { %>
             <md-input-container class="md-block" flex-gt-sm>
                 <label><%= entityFields[field] %></label>
                 <input ng-model="vm.translation.<%= entityFields[field] %>" required>
             </md-input-container>
             <% }%>
+            </md-content>
         </md-tab>
 
     </md-tabs>

@@ -24,8 +24,9 @@ class <%= entity %>EditController {
 		};
 		this.<%= entity %>.findOne(q, function(res) {
 			this.entity = res.toJSON();
+			// workaround for the checkbox
+			this.entity.publish = (this.entity.publish == 1);
 			this.translation = this.entity.translations[0] || {};
-			console.log('this.translation', this.translation);
 		}.bind(this));
 	}
 
